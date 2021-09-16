@@ -1,29 +1,24 @@
+import React from "react";
+import Login from "./Login.jsx";
+import Home from "./Home.jsx";
+import { HashRouter, Route, Link ,Switch} from 'react-router-dom'
+
 function Heading() {
-    const date = new Date();
-    const currentTime = date.getHours();
-  
-    let greeting;
-  
-    const customStyle = {
-      color: ""
-    };
-  
-    if (currentTime < 12) {
-      greeting = "Good Morning";
-      customStyle.color = "red";
-    } else if (currentTime < 18) {
-      greeting = "Good Afternoon";
-      customStyle.color = "green";
-    } else {
-      greeting = "Good Night";
-      customStyle.color = "blue";
-    }
-  
-    return (
-      <h1 className="heading" style={customStyle}>
-        {greeting}
-      </h1>
-    );
+  return (
+    <header>
+      <HashRouter> 
+        <ul >
+          <h1 className="nav">To do list</h1>
+          <li className="nav"><Link to='/home'>Home</Link></li>
+          <li className="nav"><Link to='/login'>Log In</Link></li>
+        </ul>
+        <Switch>
+          <Route path='/home' component={Home}/>
+          <Route path='/login' component={Login}/>
+        </Switch>
+      </HashRouter>
+    </header>
+  );
   }
   
   export default Heading;
